@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import { token } from "./config.json";
 
-import log from "./console.log";
+import initializeEvents from "./handler/events";
 
 const client = new Client({
   intents: [
@@ -12,9 +12,8 @@ const client = new Client({
   ],
 });
 
-client.on("ready", () => {
-  console.log(client.user?.tag);
-  log();
-});
+initializeEvents();
 
 client.login(token);
+
+export default client;
